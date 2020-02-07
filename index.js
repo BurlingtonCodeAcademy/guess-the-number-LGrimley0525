@@ -10,9 +10,25 @@ function ask(questionText) {
 start();
 
 async function start() {
-  console.log("Let's play a game where you (human) make up a number and I (computer) try to guess it.")
-  let secretNumber = await ask("What is your secret number?\nI won't peek, I promise...\n");
-  console.log('You entered: ' + secretNumber);
-  // Now try and complete the program.
-  process.exit();
+  // this should start the program
+  console.log("Let's play a game where you pick a number between 1 and 100, \nand then I will try to guess it in as few tries as possible!\n\n")
+  let secretNumber = randomInt(1,100);
+  let numQuestion = (await ask ('Is it... ' + secretNumber + '? Y/N?  ')).toString().toLowerCase().trim();
+  if (numQuestion === 'y'){
+    console.log("Your number was "  + secretNumber + "!")
+    process.exit()}
+      
+  else {
+ let newQuestion = (await ask ('Hmmmm...Is your number higher or lower than my guess?  Type H or L')).toString().toLowerCase().trim();
+if (newQuestion === 'h') { 
+console.log("Is it ..." + randomInt((secretNumber + 1), 100) + "? Y/N")
+}  
+}
+}
+
+
+function randomInt(min,max) {
+  let range = max - min + 1;
+  return min + Math.floor(Math.random() * range)
+  //allows the random number generated within game range
 }
