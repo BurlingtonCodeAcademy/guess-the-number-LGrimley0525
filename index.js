@@ -41,7 +41,7 @@ async function start() {
     }
     else {//if user number is lower, this will generate a new random number between 1 and the guess -1 
       maxVal = ranNum
-      ranNum = randomInt(minVal, ((maxVal) - 1)).slice
+      ranNum = randomInt(minVal, ((maxVal) - 1))
       guessCount += 1;
       if (ranNum === guess) {//this will exclude previous guess in new number
         randomInt(minVal, ((maxVal) - 1))
